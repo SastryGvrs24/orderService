@@ -14,7 +14,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"restaurantId\" : 1,\r\n    \"customerName\": \"Sastry Gvrs\",\r\n    \"contactNumber\" : 1234567890,\r\n    \"menuItemIds\" : [1]\r\n}",
+					"raw": "{\r\n    \"restaurantId\" : 1,\r\n    \"customerName\": \"Sastry Gvrs\",\r\n    \"contactNumber\" : 1234567890,\r\n    \"menuItemIds\" : [1,2]\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -29,30 +29,13 @@
 			"name": "getOrders",
 			"request": {
 				"method": "GET",
-				"header": []
+				"header": [],
+				"url": "{{baseUrl}}/orders/1"
 			},
 			"response": []
 		},
 		{
 			"name": "updateOrder",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"id\" : 1,\r\n    \"restaurantId\" : 1,\r\n    \"orderstatus\" : \"ACCEPTED_BY_RESTAURANT\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": "{{baseUrl}}/orders/updateOrder"
-			},
-			"response": []
-		},
-		{
-			"name": "updateOrderCustomer",
 			"request": {
 				"method": "POST",
 				"header": [],
@@ -65,7 +48,25 @@
 						}
 					}
 				},
-				"url": "{{baseUrl}}/orders//updateOrderCustomer"
+				"url": "{{baseUrl}}/orders/1/updateOrder"
+			},
+			"response": []
+		},
+		{
+			"name": "updateOrderRestaurant",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\" : 1,\r\n    \"restaurantId\" : 1,\r\n    \"orderstatus\" : \"ACCEPTED_BY_RESTAURANT\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{baseUrl}}/orders/updateOrderRestaurant"
 			},
 			"response": []
 		}
@@ -95,7 +96,7 @@
 	"variable": [
 		{
 			"key": "baseUrl",
-			"value": "http://localhost:8082",
+			"value": "http://localhost:8081",
 			"type": "string"
 		}
 	]

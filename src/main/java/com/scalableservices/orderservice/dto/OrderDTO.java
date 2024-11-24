@@ -6,6 +6,7 @@ public class OrderDTO {
 
     RestaurantDTO restaurantDTO;
     List<MenuItemDTO> menuItemDTO;
+    String orderstatus;
 
     public RestaurantDTO getRestaurantDTO() {
         return restaurantDTO;
@@ -21,5 +22,13 @@ public class OrderDTO {
 
     public void setMenuItemDTO(List<MenuItemDTO> menuItemDTO) {
         this.menuItemDTO = menuItemDTO;
+    }
+
+    public String getOrderstatus() {
+        return orderstatus;
+    }
+
+    public void setOrderstatus(String orderstatus) {
+        this.orderstatus = orderstatus;
     }
 }

@@ -70,7 +70,7 @@ public class OrderController {
 
     // Get Order by ID
     @GetMapping("/{id}")
-//    @PreAuthorize("hasRole('ROLE_CUSTOMER')")
+    @PreAuthorize("hasAnyRole('customer', 'restaurant')")
     public ResponseEntity<OrderDTO> getOrderById(@PathVariable Long id, HttpServletRequest request) {
         return ResponseEntity.ok(orderService.getOrderById(id, request));
     }

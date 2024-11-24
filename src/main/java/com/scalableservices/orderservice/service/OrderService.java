@@ -47,6 +47,7 @@ public class OrderService {
             OrderDTO orderDTO = new OrderDTO();
             orderDTO.setMenuItemDTO(menuItemsDTO);
             orderDTO.setRestaurantDTO(restaurantDTO);
+            orderDTO.setOrderstatus(order.get().getStatus());
 
             return orderDTO;
         }
