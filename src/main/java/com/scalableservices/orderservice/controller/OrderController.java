@@ -72,7 +72,12 @@ public class OrderController {
     @GetMapping("/{id}")
     @PreAuthorize("hasAnyRole('customer', 'restaurant')")
     public ResponseEntity<OrderDTO> getOrderById(@PathVariable Long id, HttpServletRequest request) {
-        return ResponseEntity.ok(orderService.getOrderById(id, request));
+        OrderDTO order = orderService.getOrderById(id, request);
+        if(order != null) {
+            return ResponseEntity.ok(order);
+        }
+
+        return ResponseEntity.notFound().build();
     }
 
 }

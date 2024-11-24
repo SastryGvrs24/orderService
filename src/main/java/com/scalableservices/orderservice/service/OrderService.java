@@ -1,6 +1,7 @@
 package com.scalableservices.orderservice.service;
 
 import com.scalableservices.orderservice.domain.Orders;
+import com.scalableservices.orderservice.dto.JwtValidationResponse;
 import com.scalableservices.orderservice.dto.MenuItemDTO;
 import com.scalableservices.orderservice.dto.OrderDTO;
 import com.scalableservices.orderservice.dto.RestaurantDTO;
@@ -29,12 +30,19 @@ public class OrderService {
     @Autowired
     private OrderRepository orderRepository;
 
+    @Autowired
+    private JwtService jwtService;
+
     @Value("${app-restaurantservice-url}")
     private String restaurantServiceUrl;
 
     public void createOrder(Orders order, HttpServletRequest request) {
         RestaurantDTO restaurantDTO = getRestaurant(order.getRestaurantId(), request);
         List<MenuItemDTO> menuItemsDTO = getMenuItems(order.getMenuItemIds(), request);
+
+        JwtValidationResponse response = jwtService.validateJwt(extractJwtFromCookies(request));
+        order.setCustomerName(new StringBuilder().append(response.getFirstName()).append(" ").append(response.getLastName()).toString());
+        order.setCustomerEmail(response.getEmailId());
         orderRepository.save(order);
     }
 
@@ -48,11 +56,13 @@ public class OrderService {
             orderDTO.setMenuItemDTO(menuItemsDTO);
             orderDTO.setRestaurantDTO(restaurantDTO);
             orderDTO.setOrderstatus(order.get().getStatus());
+            orderDTO.setCustomerName(order.get().getCustomerName());
+            orderDTO.setCustomerEmail(order.get().getCustomerEmail());
 
             return orderDTO;
         }
 
-        return new OrderDTO();
+        return null;
     }
 
     public List<MenuItemDTO> getMenuItems(List<Long> menuItemIds, HttpServletRequest request) {

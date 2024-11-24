@@ -14,6 +14,7 @@ public class Orders {
     private Long contactNumber;
 
     private Long restaurantId;
+    private String customerEmail;
 
     @ElementCollection
     private List<Long> menuItemIds; // List of MenuItem IDs corresponding to the order
@@ -68,5 +69,13 @@ public class Orders {
 
     public void setStatus(ORDERSTATUS status) {
         this.status = status.getOrderStatus();
+    }
+
+    public String getCustomerEmail() {
+        return customerEmail;
+    }
+
+    public void setCustomerEmail(String customerEmail) {
+        this.customerEmail = customerEmail;
     }
 }

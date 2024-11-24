@@ -7,6 +7,8 @@ public class OrderDTO {
     RestaurantDTO restaurantDTO;
     List<MenuItemDTO> menuItemDTO;
     String orderstatus;
+    String customerName;
+    String customerEmail;
 
     public RestaurantDTO getRestaurantDTO() {
         return restaurantDTO;
@@ -30,5 +32,21 @@ public class OrderDTO {
 
     public void setOrderstatus(String orderstatus) {
         this.orderstatus = orderstatus;
+    }
+
+    public String getCustomerName() {
+        return customerName;
+    }
+
+    public void setCustomerName(String customerName) {
+        this.customerName = customerName;
+    }
+
+    public String getCustomerEmail() {
+        return customerEmail;
+    }
+
+    public void setCustomerEmail(String customerEmail) {
+        this.customerEmail = customerEmail;
     }
 }
