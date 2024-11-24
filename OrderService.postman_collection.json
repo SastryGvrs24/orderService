@@ -1,0 +1,102 @@
+{
+	"info": {
+		"_postman_id": "fdc9bba6-da6b-443b-87e0-558f65deb6a5",
+		"name": "OrderService",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "38189414",
+		"_collection_link": "https://aaa444-0988.postman.co/workspace/AAA-Workspace~0009ddef-549b-43a6-acbc-9b68d03a44bf/collection/38189414-fdc9bba6-da6b-443b-87e0-558f65deb6a5?action=share&source=collection_link&creator=38189414"
+	},
+	"item": [
+		{
+			"name": "createOrder",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"restaurantId\" : 1,\r\n    \"customerName\": \"Sastry Gvrs\",\r\n    \"contactNumber\" : 1234567890,\r\n    \"menuItemIds\" : [1]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{baseUrl}}/orders"
+			},
+			"response": []
+		},
+		{
+			"name": "getOrders",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "updateOrder",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\" : 1,\r\n    \"restaurantId\" : 1,\r\n    \"orderstatus\" : \"ACCEPTED_BY_RESTAURANT\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{baseUrl}}/orders/updateOrder"
+			},
+			"response": []
+		},
+		{
+			"name": "updateOrderCustomer",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\" : 1,\r\n    \"restaurantId\" : 1,\r\n    \"orderstatus\" : \"CANCELLED\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{baseUrl}}/orders//updateOrderCustomer"
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:8082",
+			"type": "string"
+		}
+	]
+}
